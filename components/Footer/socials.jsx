@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import link from "@/public/ChaptersCollege/link.png";
 import fb from "@/public/ChaptersCollege/fb.png";
 import X from "@/public/ChaptersCollege/x.png";

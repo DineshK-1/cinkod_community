@@ -10,7 +10,7 @@ const Header = () => {
 	const Navbar = [
 		{
 			name: "Home",
-			link: "/home",
+			link: "/",
 		},
 		{
 			name: "About",
@@ -22,7 +22,11 @@ const Header = () => {
 		},
 		{
 			name: "Chapters",
-			link: "/chapter",
+			link: "/chapters",
+		},
+		{
+			name: "Blogs",
+			link: "/blogs",
 		},
 	];
 
@@ -32,7 +36,7 @@ const Header = () => {
 				<div className="justify-between ml-4 mx-auto lg:w-full md:items-center md:flex ">
 					<div>
 						<div className="flex items-center justify-between mr-28 py-2 md:py-5 md:block">
-							<Link href="/home" className="flex items-center">
+							<Link href="/" className="flex items-center">
 								<Image src={logo} alt="Logo" height={100} width={60} />
 							</Link>
 

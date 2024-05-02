@@ -1,11 +1,10 @@
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-import Mad from "../../assets/chapters college/madhav.png";
-import College from "../../assets/chapters college/college.png";
-import Card from "./card";
-import Blog from "../../assets/chapters college/blog-bg.png";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+import Mad from "@/public/ChaptersCollege/madhav.png";
+import College from "@/public/ChaptersCollege/college.png";
+import Card from "@/components/chapters-college/card";
 
-function CC() {
+function CollegePage() {
 	return (
 		<>
 			<div className="overflow-x-hidden relative px-28 bg-[#121212] h-full">
@@ -161,4 +160,4 @@ function CC() {
 	);
 }
 
-export default CC;
+export default CollegePage;

@@ -1,4 +1,3 @@
-import React from "react";
 import fb from "../../assets/chapters college/fb.png";
 import X from "../../assets/chapters college/x.png";
 import link from "../../assets/chapters college/link.png";

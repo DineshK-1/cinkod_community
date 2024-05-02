@@ -71,13 +71,15 @@ export default function Home() {
 						{/* ************ CARD FLEXBOX ****************** */}
 
 						<div className="parent flex justify-center items-center h-4/5">
-							<div class="flex flex-wrap mx-1 justify-center lg:flex-row sm:flex-col md:flex-row w-2/4 h-full">
+							<div className="flex flex-wrap mx-1 justify-center lg:flex-row sm:flex-col md:flex-row w-2/4 h-full">
 								{/* ************ CARDS IN PAGE 2 ****************** */}
 
-								<div class="w-full lg:w-1/2 p-4 md:w-2/3 sm:w-full h-1/2 mb-4 md:mb-0">
-									<div class="bg-[#ffffff28] border-2 border-r-blue-300 shadow-sm shadow-blue-400 border-b-blue-400 rounded-lg p-4 h-full">
-										<h2 class="text-white text-xl font-bold mb-2">Title </h2>
-										<p class="text-white">
+								<div className="w-full lg:w-1/2 p-4 md:w-2/3 sm:w-full h-1/2 mb-4 md:mb-0">
+									<div className="bg-[#ffffff28] border-2 border-r-blue-300 shadow-sm shadow-blue-400 border-b-blue-400 rounded-lg p-4 h-full">
+										<h2 className="text-white text-xl font-bold mb-2">
+											Title{" "}
+										</h2>
+										<p className="text-white">
 											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 											Sed do eiusmod tempor incididunt ut labore et dolore magna
 											aliqua.
@@ -85,10 +87,12 @@ export default function Home() {
 									</div>
 								</div>
 
-								<div class="w-full lg:w-1/2 md:w-2/3 p-4 sm:w-full h-1/2 mb-4 md:mb-0">
-									<div class="bg-[#ffffff28] backdrop-blur-2xl border-2 border-l-blue-300  border-b-blue-400  shadow-sm shadow-teal-500  order-b-blue-400 rounded-lg p-4 h-full transform lg:-translate-y-8">
-										<h2 class="text-white text-xl font-bold mb-2">Title </h2>
-										<p class="text-white">
+								<div className="w-full lg:w-1/2 md:w-2/3 p-4 sm:w-full h-1/2 mb-4 md:mb-0">
+									<div className="bg-[#ffffff28] backdrop-blur-2xl border-2 border-l-blue-300  border-b-blue-400  shadow-sm shadow-teal-500  order-b-blue-400 rounded-lg p-4 h-full transform lg:-translate-y-8">
+										<h2 className="text-white text-xl font-bold mb-2">
+											Title{" "}
+										</h2>
+										<p className="text-white">
 											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 											Sed do eiusmod tempor incididunt ut labore et dolore magna
 											aliqua.
@@ -96,10 +100,12 @@ export default function Home() {
 									</div>
 								</div>
 
-								<div class="w-full lg:w-1/2 p-4 md:w-2/3 sm:w-full h-1/2 mb-4 md:mb-0">
-									<div class="bg-[#ffffff28] border-2 border-b-teal-500 border-l-teal-500 shadow-sm shadow-teal-500 rounded-lg p-4 h-full ">
-										<h2 class="text-white text-xl font-bold mb-2">Title </h2>
-										<p class="text-white">
+								<div className="w-full lg:w-1/2 p-4 md:w-2/3 sm:w-full h-1/2 mb-4 md:mb-0">
+									<div className="bg-[#ffffff28] border-2 border-b-teal-500 border-l-teal-500 shadow-sm shadow-teal-500 rounded-lg p-4 h-full ">
+										<h2 className="text-white text-xl font-bold mb-2">
+											Title{" "}
+										</h2>
+										<p className="text-white">
 											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 											Sed do eiusmod tempor incididunt ut labore et dolore magna
 											aliqua.
@@ -107,10 +113,12 @@ export default function Home() {
 									</div>
 								</div>
 
-								<div class="w-full lg:w-1/2 p-4 md:w-2/3 sm:w-full h-1/2 mb-4 md:mb-0">
-									<div class="bg-[#ffffff28] border-2 border-b-teal-500 border-l-teal-500 shadow-sm shadow-teal-500 rounded-lg p-4 h-full transform lg:-translate-y-8">
-										<h2 class="text-white text-xl font-bold mb-2">Title </h2>
-										<p class="text-white">
+								<div className="w-full lg:w-1/2 p-4 md:w-2/3 sm:w-full h-1/2 mb-4 md:mb-0">
+									<div className="bg-[#ffffff28] border-2 border-b-teal-500 border-l-teal-500 shadow-sm shadow-teal-500 rounded-lg p-4 h-full transform lg:-translate-y-8">
+										<h2 className="text-white text-xl font-bold mb-2">
+											Title{" "}
+										</h2>
+										<p className="text-white">
 											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 											Sed do eiusmod tempor incididunt ut labore et dolore magna
 											aliqua.

@@ -1,7 +1,8 @@
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-import Blog from "../../assets/chapters college/blog-bg.png";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+import Blog from "@/public/ChaptersCollege/blog-bg.png";
 import Image from "next/image";
+import Link from "next/link";
 
 function BlogSpecf() {
 	return (
@@ -38,7 +39,7 @@ function BlogSpecf() {
 							<div className="h-full bg-gradient-to-tr from-cyan-400/30 via-teal-400/40  to-yellow-300/30 border border-white rounded-lg ml-16 mr-16 mb-16 flex flex-col justify-center items-center w-full">
 								<div className="back flex justify-start mb-8 w-full ml-24">
 									<button className="border-yellow-400 text-yellow-400 hover:bg-yellow-500 hover:text-white mt-8 border py-1 px-4">
-										<a href="/blogs">Back</a>
+										<Link href="/blogs">Back</Link>
 									</button>
 								</div>
 
