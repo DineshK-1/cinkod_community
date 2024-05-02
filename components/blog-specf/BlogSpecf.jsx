@@ -25,7 +25,7 @@ function BlogSpecf() {
 							<div className="text-white text-center mt-20 font-bold text-4xl ">
 								<h1>Welcome to</h1>
 								<h1 className="text-the-blue">
-									CINKODE <span className="text-the-yellow">DEVELOPER</span>{" "}
+									CINKOD <span className="text-the-yellow">DEVELOPER</span>{" "}
 									COMMUNITY
 								</h1>
 							</div>

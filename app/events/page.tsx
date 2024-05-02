@@ -40,7 +40,7 @@ const Community = () => {
 	};
 
 	return (
-		<section className="community relative">
+		<section className="community relative bg-background">
 			<Header />
 
 			<div className="text-white text-center mt-20 font-bold text-4xl ">
@@ -53,7 +53,7 @@ const Community = () => {
 				<input
 					type="text"
 					placeholder="Search..."
-					className="w-2/5 px-4 py-2 mt-3 mb-7 border border-gray-300 rounded-md  focus:outline-none focus:border-blue-500"
+					className="w-2/5 px-4 py-2 mt-3 mb-7 border rounded-md outline-none focus:border-blue-500 border-zinc-700 bg-transparent transition-all"
 				/>
 			</div>
 			<h1 className="text-white text-3xl text-center py-2 px-2 font-bold">

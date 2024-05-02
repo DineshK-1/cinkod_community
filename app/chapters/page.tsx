@@ -15,14 +15,14 @@ function Chapter() {
 
 	return (
 		<div>
-			<div className="bg-gradient-to-b flex flex-col items-center from-black to-[#13131a] text-white w-full p-1 h-full">
+			<div className="flex flex-col items-center bg-background text-white w-full p-1 h-full">
 				<Header />
 
 				<section className="flex flex-col justify-center items-center">
 					<div className="text-white text-center mt-20 font-bold text-4xl ">
 						<h1>Welcome to</h1>
 						<h1 className="text-the-blue">
-							CINKODE <span className="text-the-yellow">DEVELOPER</span>{" "}
+							CINKOD <span className="text-the-yellow">DEVELOPER</span>{" "}
 							COMMUNITY
 						</h1>
 					</div>
@@ -31,7 +31,7 @@ function Chapter() {
 						<input
 							type="text"
 							placeholder="Search..."
-							className="w-2/5 px-4 py-2 mt-3 mb-7 border border-gray-300 text-black rounded-md focus:outline-none focus:border-blue-500"
+							className="w-2/5 px-4 py-2 mt-3 mb-7 border rounded-md outline-none focus:border-blue-500 border-zinc-700 bg-transparent transition-all"
 						/>
 					</div>
 
