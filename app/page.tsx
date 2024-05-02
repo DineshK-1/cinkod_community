@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
-import CountdownTimer from "@/components/Countdown";
+import CountdownTimer from "@/components/countdown";
 import Img1 from "@/public/Home/Img1.png";
 import Laptop from "@/public/Home/laptop.png";
 import Image from "next/image";
