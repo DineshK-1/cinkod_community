@@ -1,0 +1,127 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 Int       @id @default(autoincrement())
+  email              String    @unique
+  name               String?
+  avatar_url         String
+  user_name          String    @unique
+  google_uid         String    @unique
+  college_name       String
+  phone              String
+  bio                String
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @default(now()) @updatedAt
+  lead               College?  @relation("college_lead")
+  comments           Comment[]
+  socials            Socials[]
+  member_of_colleges College[] @relation("College_Members")
+  core_team_colleges College[] @relation("Core_team_members")
+}
+
+model Socials {
+  id     Int    @id @default(autoincrement())
+  name   String
+  url    String
+  userId Int
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model CinkodAdmin {
+  id         Int      @id @default(autoincrement())
+  email      String   @unique
+  name       String?
+  avatar_url String
+  user_name  String   @unique
+  google_uid String   @unique
+  phone      String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+}
+
+model CollegeAdmin {
+  id             Int      @id @default(autoincrement())
+  email          String   @unique
+  name           String
+  user_name      String   @unique
+  google_uid     String?  @unique
+  phone          String
+  collegeId      Int
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @default(now()) @updatedAt
+  isAdminstrator Boolean
+  isCoreTeam     Boolean
+  isLead         Boolean
+  isMember       Boolean
+  college        College  @relation(fields: [collegeId], references: [id])
+}
+
+model Event {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  banner_url  String
+  venue       String
+  from        DateTime
+  to          DateTime
+  maxSlots    Int
+  collegeId   Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+  college     College  @relation(fields: [collegeId], references: [id])
+}
+
+model College {
+  id            Int            @id @default(autoincrement())
+  name          String         @unique
+  email         String         @unique
+  leadId        Int            @unique
+  description   String
+  banner_url    String
+  members_count Int
+  region        String
+  photos        String[]
+  videos        String[]
+  socials       String[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @default(now()) @updatedAt
+  blogs         Blog[]
+  lead          User           @relation("college_lead", fields: [leadId], references: [id])
+  admins        CollegeAdmin[]
+  events        Event[]
+  members       User[]         @relation("College_Members")
+  core_team     User[]         @relation("Core_team_members")
+}
+
+model Blog {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String
+  banner_url  String
+  collegeId   Int
+  upvotes     Int
+  shares      Int
+  views       Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now()) @updatedAt
+  college     College   @relation(fields: [collegeId], references: [id])
+  comments    Comment[]
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  text      String
+  userId    Int
+  blogId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  blog      Blog     @relation(fields: [blogId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+}
