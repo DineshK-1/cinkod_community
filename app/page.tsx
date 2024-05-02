@@ -1,113 +1,176 @@
+import Footer from "@/components/Footer/Footer";
+import Header from "@/components/Header/Header";
+import CountdownTimer from "@/components/Countdown";
+import Img1 from "@/public/Home/Img1.png";
+import Laptop from "@/public/Home/laptop.png";
 import Image from "next/image";
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+	return (
+		<>
+			<div className="overflow-x-hidden relative bg-[#121212]">
+				<Header />
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+				<div
+					className="absolute w-80 h-80 top-[7%] left-[40%] rounded-full"
+					style={{
+						background:
+							"linear-gradient(to bottom right, var(--color1), var(--color2), var(--color3))",
+						"--color1": "rgb(241, 236, 33)",
+						"--color2": "rgb(62, 141, 137)",
+						"--color3": "rgb(1, 160, 225)",
+						filter: "blur(7.66rem)",
+					}}
+				></div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+				<div className=" relative flex justify-center items-center h-screen ">
+					{/*  */}
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+					<div className="container w-4/5 h-1/2 lg:w-2/3">
+						<div className="w-full h-full text-white flex flex-col gap-4 items-center justify-start  ">
+							<h1 className="block text-5xl mt-4 "> Lorem ipsum </h1>
+							<h1 className="block text-5xl ">
+								{" "}
+								<span className="text-the-yellow">Lorem ipsum</span> dolor sit{" "}
+							</h1>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+							<p className=" block text-lg text-center mt-6">
+								{" "}
+								Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+								Repudiandae necessitatibus molestias maxime omnis, eveniet velit
+								eaque ullam saepe, amet accusamus rem! Illo, accusantium
+								numquam?
+							</p>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+							<h1 className=" text-the-yellow text-lg">
+								{" "}
+								Have a look at our community
+							</h1>
+							<button className="bg-transparent border-2 cursor-pointer border-[rgb(1,160,225)] text-[#01A0E1] hover:bg-blue-500 hover:text-[#fff] py-2 px-4  font-bold">
+								View Community
+							</button>
+
+							<CountdownTimer />
+						</div>
+					</div>
+				</div>
+
+				{/* ********** NEXT PAGE *************** */}
+
+				<div className=" relative flex justify-center items-center h-full lg:h-screen pb-10 mt-[10rem] ">
+					<div className="relative w-full h-full">
+						<div className="absolute w-72 h-72 rounded-full bg-gradient-to-br from-[#01A0E1] to-[#01A0E1] filter blur-[8rem] top-[25%] left-[20%] lg:left-[30%]"></div>
+						<div className="absolute w-72 h-72 rounded-full bg-gradient-to-br from-blue-400 via-teal-500 to-yellow-400 filter blur-[8rem] top-[60%] left-[45%] lg:top-[55%] lg:left-[50%]"></div>
+						{/* *********************************************** */}
+
+						<h1 className="text-the-blue text-4xl font-light ml-44 mb-20 mt-20">
+							{" "}
+							How we help the students{" "}
+						</h1>
+
+						{/* ************ CARD FLEXBOX ****************** */}
+
+						<div className="parent flex justify-center items-center h-4/5">
+							<div class="flex flex-wrap mx-1 justify-center lg:flex-row sm:flex-col md:flex-row w-2/4 h-full">
+								{/* ************ CARDS IN PAGE 2 ****************** */}
+
+								<div class="w-full lg:w-1/2 p-4 md:w-2/3 sm:w-full h-1/2 mb-4 md:mb-0">
+									<div class="bg-[#ffffff28] border-2 border-r-blue-300 shadow-sm shadow-blue-400 border-b-blue-400 rounded-lg p-4 h-full">
+										<h2 class="text-white text-xl font-bold mb-2">Title </h2>
+										<p class="text-white">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Sed do eiusmod tempor incididunt ut labore et dolore magna
+											aliqua.
+										</p>
+									</div>
+								</div>
+
+								<div class="w-full lg:w-1/2 md:w-2/3 p-4 sm:w-full h-1/2 mb-4 md:mb-0">
+									<div class="bg-[#ffffff28] backdrop-blur-2xl border-2 border-l-blue-300  border-b-blue-400  shadow-sm shadow-teal-500  order-b-blue-400 rounded-lg p-4 h-full transform lg:-translate-y-8">
+										<h2 class="text-white text-xl font-bold mb-2">Title </h2>
+										<p class="text-white">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Sed do eiusmod tempor incididunt ut labore et dolore magna
+											aliqua.
+										</p>
+									</div>
+								</div>
+
+								<div class="w-full lg:w-1/2 p-4 md:w-2/3 sm:w-full h-1/2 mb-4 md:mb-0">
+									<div class="bg-[#ffffff28] border-2 border-b-teal-500 border-l-teal-500 shadow-sm shadow-teal-500 rounded-lg p-4 h-full ">
+										<h2 class="text-white text-xl font-bold mb-2">Title </h2>
+										<p class="text-white">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Sed do eiusmod tempor incididunt ut labore et dolore magna
+											aliqua.
+										</p>
+									</div>
+								</div>
+
+								<div class="w-full lg:w-1/2 p-4 md:w-2/3 sm:w-full h-1/2 mb-4 md:mb-0">
+									<div class="bg-[#ffffff28] border-2 border-b-teal-500 border-l-teal-500 shadow-sm shadow-teal-500 rounded-lg p-4 h-full transform lg:-translate-y-8">
+										<h2 class="text-white text-xl font-bold mb-2">Title </h2>
+										<p class="text-white">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Sed do eiusmod tempor incididunt ut labore et dolore magna
+											aliqua.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				{/* ******************** NEXT PAGE ******************* */}
+
+				<div className=" relative flex justify-center items-center h-full lg:h-full mb-40 pb-10 ">
+					<div className="absolute w-72 h-72 rounded-full bg-gradient-to-br from-[#01A0E1] to-[#01A0E1] filter blur-[8rem] top-[25%] left-[20%] lg:left-[30%]"></div>
+					<div className="absolute w-72 h-72 rounded-full bg-gradient-to-br from-blue-400 via-teal-500 to-yellow-400 filter blur-[8rem] top-[60%] left-[45%] lg:top-[55%] lg:left-[50%]"></div>
+
+					{/* ********  IMAGES *********** */}
+
+					<div className="flex container mx-auto flex-col items-center h-full lg:ml-72 mt-[17rem] mb-28  ">
+						<div className="flex h-3/4 mb-16">
+							<div className="image h-full">
+								<Image src={Img1} alt="Image 1" />
+							</div>
+
+							<p className="block text-white text-lg mr-2 ml-8 text-justify mt-16 w-[55%]">
+								Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+								Similique assumenda nesciunt ipsam vel exercitationem nisi
+								deserunt maiores quae debitis ea magnam doloremque provident
+								enim possimus, laborum cupiditate beatae cumque magni dicta
+								voluptatem vero. Fugit?Lorem ipsum dolor sit amet consectetur
+								adipisicing elit. Reprehenderit minima, ducimus tempore ex odit
+								illo voluptates corrupti facere dolorum harum, incidunt error?
+								Ipsa.
+							</p>
+						</div>
+
+						<div className="flex h-3/4 ">
+							<p className="block text-white w-[55%] text-lg mr-8  ml-2 text-justify mt-16">
+								Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+								Similique assumenda nesciunt ipsam vel exercitationem nisi
+								deserunt maiores quae debitis ea magnam doloremque provident
+								enim possimus, laborum cupiditate beatae cumque magni dicta
+								voluptatem vero. Fugit?Lorem ipsum dolor sit amet consectetur
+								adipisicing elit. Reprehenderit minima, ducimus tempore ex odit
+								illo voluptates corrupti facere dolorum harum, incidunt error?
+								Ipsa.
+							</p>
+
+							<div className="image h-full">
+								<Image src={Laptop} alt="img1" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+				{/* ******* FOOTER ******** */}
+
+				<Footer />
+			</div>
+		</>
+	);
 }

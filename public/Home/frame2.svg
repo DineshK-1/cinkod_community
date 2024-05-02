@@ -1,0 +1,17 @@
+<svg width="210" height="251" viewBox="0 0 210 251" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.6">
+<rect x="13.5" y="11.5" width="186" height="227" stroke="#007BB5" stroke-width="3" stroke-dasharray="4 4"/>
+<line x1="13" y1="240" x2="13" y2="251" stroke="#007BB5" stroke-width="2"/>
+<line x1="12" y1="240" x2="1" y2="240" stroke="#007BB5" stroke-width="2"/>
+<line x1="200" y1="238" x2="200" y2="250" stroke="#007BB5" stroke-width="2"/>
+<line x1="210" y1="239" x2="200" y2="239" stroke="#007BB5" stroke-width="2"/>
+<line x1="200" y1="4.37114e-08" x2="200" y2="13" stroke="#007BB5" stroke-width="2"/>
+<line x1="210" y1="11" x2="199" y2="11" stroke="#007BB5" stroke-width="2"/>
+<line x1="13" y1="4.37114e-08" x2="13" y2="11" stroke="#007BB5" stroke-width="2"/>
+<line x1="14" y1="11" y2="11" stroke="#007BB5" stroke-width="2"/>
+<rect x="53" y="151.5" width="107" height="12" rx="6" fill="#007BB5" fill-opacity="0.3"/>
+<rect x="77" y="174.5" width="73" height="10" rx="5" fill="#007BB5" fill-opacity="0.3"/>
+<rect x="44" y="66.5" width="124" height="72" rx="5" fill="#007BB5" fill-opacity="0.4"/>
+<path d="M40 64C40 61.2386 42.2386 59 45 59H168C170.761 59 173 61.2386 173 64V187C173 189.761 170.761 192 168 192H45C42.2386 192 40 189.761 40 187V64Z" fill="#007BB5" fill-opacity="0.2"/>
+</g>
+</svg>
