@@ -9,7 +9,7 @@ function Chapter() {
 	const [activeRegion, setActiveRegion] = useState("north"); // Default is 'north'
 
 	// Function to handle button clicks
-	const handleRegionChange = (region) => {
+	const handleRegionChange = (region: any) => {
 		setActiveRegion(region);
 	};
 

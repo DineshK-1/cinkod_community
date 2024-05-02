@@ -17,19 +17,19 @@ const Community = () => {
 		tags: ["Tag A", "Tag B"],
 	}));
 
-	const filterByCategory = (event) => {
+	const filterByCategory = (event: any) => {
 		const category = event.target.value;
 		setSelectedCategory(category === "All Categories" ? null : category);
 		setSelectedTag(null);
 	};
 
-	const filterByTag = (event) => {
+	const filterByTag = (event: any) => {
 		const tag = event.target.value;
 		setSelectedTag(tag === "All Tags" ? null : tag);
 		setSelectedCategory(null);
 	};
 
-	const cardMatchesFilters = (card) => {
+	const cardMatchesFilters = (card: any) => {
 		if (selectedCategory && card.category !== selectedCategory) {
 			return false;
 		}

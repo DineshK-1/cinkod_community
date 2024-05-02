@@ -15,9 +15,6 @@ function BlogSpecf() {
 						style={{
 							background:
 								"linear-gradient(to bottom right, var(--color1), var(--color2), var(--color3))",
-							"--color1": "rgb(241, 236, 33)",
-							"--color2": "rgb(62, 141, 137)",
-							"--color3": "rgb(1, 160, 225)",
 							filter: "blur(7.66rem)",
 							zIndex: "-1",
 						}}

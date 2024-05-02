@@ -3,6 +3,7 @@ import Footer from "@/components/Footer/Footer";
 import Mad from "@/public/ChaptersCollege/madhav.png";
 import College from "@/public/ChaptersCollege/college.png";
 import Card from "@/components/chapters-college/card";
+import Image from "next/image";
 
 function CollegePage() {
 	return (
@@ -16,9 +17,6 @@ function CollegePage() {
 						style={{
 							background:
 								"linear-gradient(to bottom right, var(--color1), var(--color2), var(--color3))",
-							"--color1": "rgb(241, 236, 33)",
-							"--color2": "rgb(62, 141, 137)",
-							"--color3": "rgb(1, 160, 225)",
 							filter: "blur(7.66rem)",
 							zIndex: "-1",
 						}}
@@ -28,12 +26,12 @@ function CollegePage() {
 						<div className=" img-parent h-[4.66rem] w-full flex  justify-center items-center ">
 							<div className="img  ">
 								{" "}
-								<img className="" src={Mad} alt="" />
+								<Image className="" src={Mad} alt="" />
 							</div>
 						</div>
 
 						<div className=" h-68 w-full flex justify-center items-center">
-							<img className=" h-68 w-full " src={College} alt="" />
+							<Image className=" h-68 w-full " src={College} alt="" />
 						</div>
 
 						<div className="text-white w-full flex mt-2 justify-start ">
@@ -79,7 +77,7 @@ function CollegePage() {
 
 					<div className="card flex lg:flex-row lg:justify-between px-5 lg:items-center h-1/3 flex-wrap flex-col justify-center items-center w-[70%] mt-16 bg-gradient-to-br from-the-blue/40 to-transparent border-white border rounded-2xl ">
 						<div className="image w-44  shadow-slate-900 shadow-md h-44 my-4 bg-slate-600">
-							<img src="" alt="" />
+							<Image src="" alt="" />
 						</div>
 
 						<div className="content  w-[65%] flex-col items-start justify-center">
