@@ -75,6 +75,7 @@ model Event {
   collegeId   Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now()) @updatedAt
+  published   Boolean  @default(false)
   college     College  @relation(fields: [collegeId], references: [id])
 }
 
@@ -111,6 +112,7 @@ model Blog {
   views       Int
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @default(now()) @updatedAt
+  published   Boolean   @default(false)
   college     College   @relation(fields: [collegeId], references: [id])
   comments    Comment[]
 }
