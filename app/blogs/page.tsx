@@ -8,6 +8,7 @@ import axios from "axios";
 async function getBlogs() {
     const blogs = await axios
         .get(process.env.NEXT_PUBLIC_HOST_URL + "/api/db/blogs/fetch")
+        .then((res) => res.data)
         .catch((err) => {
             console.log(err);
             return [];
@@ -17,8 +18,6 @@ async function getBlogs() {
 
 const BlogsPage = async () => {
     const blogs = await getBlogs();
-
-    console.log(blogs);
 
     return (
         <section className="blogs bg-background">
@@ -60,7 +59,6 @@ const BlogsPage = async () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative">
-                        {/* Render only three cards */}
                         {blogs.map((card, index) => (
                             <div
                                 key={card.id}
