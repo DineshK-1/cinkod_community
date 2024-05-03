@@ -73,3 +73,16 @@ export type CollegeEvent = {
 	createdAt: Date;
 	updatedAt: Date;
 };
+
+export type Event = {
+	id: number;
+	name: string;
+	description: string;
+	banner_url: string;
+	venue: string;
+	from: Date;
+	to: Date;
+	maxSlots: number;
+	createdAt: Date;
+	updatedAt: Date;
+};

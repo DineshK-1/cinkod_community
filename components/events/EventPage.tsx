@@ -1,11 +1,10 @@
-import { College } from "@/@types";
+import { College, Event } from "@/@types";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function EventPage({ colleges }: { colleges: College[] }) {
+export default function EventPage({ events }: { events: Event[] }) {
 	return (
 		<>
-			{" "}
 			<div className="flex justify-center">
 				<input
 					type="text"
@@ -38,28 +37,28 @@ export default function EventPage({ colleges }: { colleges: College[] }) {
 					</div>
 
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative  ">
-						{colleges.map((college) => {
+						{events.map((event) => {
 							return (
 								<div
-									key={college.id}
+									key={event.id}
 									className="relative bg-slate-900 rounded-lg shadow-lg overflow-hidden"
 								>
 									<Image
 										src={``}
-										alt={`Image${college.id}`}
+										alt={`Image${event.id}`}
 										className="w-full h-48 object-cover rounded-t-lg"
 									/>
 									<div className="p-4">
 										<h2 className="text-lg text-white font-semibold mb-2">
-											{college.name}
+											{event.name}
 										</h2>
 										<h2 className="text-lg text-Yellow font-normal mb-2">
 											College name
 										</h2>
-										<p className="text-white">{college.description}</p>
+										<p className="text-white">{event.description}</p>
 										<div className="flex flex-col mt-2">
 											<Link
-												href={"/events/eventId"}
+												href={`/events/${event.id}`}
 												className="bg-yellow-500 hover:bg-yellow-400 text-slate-800 font-normal py-2 px-4 rounded text-center"
 											>
 												RSVP
