@@ -2,8 +2,22 @@ import exampleImage from "@/public/example.jpg";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import Image from "next/image";
+import axios from "axios";
 
-const Event = () => {
+async function getData(eventId: string) {
+	try {
+		const res = await axios.get(
+			`http://localhost:3000/api/db/event/${eventId}`
+		);
+		return res.data as Event;
+	} catch (err) {
+		console.error(err);
+		return [];
+	}
+}
+
+const Event = async ({ params }: { params: { eventId: string } }) => {
+	const event = await getData(params.eventId);
 	return (
 		<section className="event-display">
 			<Header />
@@ -21,7 +35,7 @@ const Event = () => {
 					Back
 				</button>
 
-				<h1 className="text-white font-bold text-3xl py-8">Event Name</h1>
+				<h1 className="text-white font-bold text-3xl py-8">{event.name}</h1>
 				<div className="flex flex-col md:flex-row justify-center md:justify-start items-center">
 					<Image
 						src={exampleImage}

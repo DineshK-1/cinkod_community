@@ -5,7 +5,7 @@ import EventPage from "@/components/events/EventPage";
 import { Event } from "@/@types";
 
 async function getData() {
-	const res = await axios.get("http://localhost:3000/api/db/colleges/fetch");
+	const res = await axios.get("http://localhost:3000/api/db/events/fetch");
 
 	return res.data as Event[];
 }
