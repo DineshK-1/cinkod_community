@@ -1,0 +1,62 @@
+import { getUserUID } from "@/firebase/firebaseAdmin";
+import { Prisma, PrismaClient } from "@prisma/client";
+import { NextResponse } from "next/server";
+
+export async function POST(request: Request) {
+    try {
+        const body = (await request.json()) as {
+            name: string;
+            username: string;
+            email: string;
+            phone: string;
+            college: string;
+            accessToken: string;
+        };
+        console.log(body);
+        const prisma = new PrismaClient();
+
+        const uid = await getUserUID(body.accessToken);
+
+        if (!uid) {
+            return new NextResponse(
+                JSON.stringify({
+                    error: "User not found!",
+                }),
+                { status: 404 }
+            );
+        }
+
+        const user = await prisma.user.create({
+            data: {
+                name: body.name,
+                user_name: body.username,
+                email: body.email,
+                phone: body.phone,
+                college_name: body.college,
+                avatar_url: "",
+                google_uid: uid,
+                bio: "",
+            },
+        });
+
+        console.log(user);
+
+        return new NextResponse(JSON.stringify({ user }), { status: 200 });
+    } catch (error) {
+        console.log(error);
+        if (error instanceof Prisma.PrismaClientKnownRequestError) {
+            return new NextResponse(
+                JSON.stringify({
+                    error: "Username already exists!",
+                }),
+                { status: 409 }
+            );
+        }
+        return new NextResponse(
+            JSON.stringify({
+                error: "Failed Registering User!",
+            }),
+            { status: 500 }
+        );
+    }
+}

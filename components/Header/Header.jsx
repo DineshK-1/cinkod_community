@@ -6,9 +6,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "@/firebase/firebase";
+import { useUser } from "@/store";
+import { useRouter } from "next/navigation";
+import { Toaster } from "react-hot-toast";
 
 const Header = () => {
     const [navbar, setNavbar] = useState(false);
+    const { user } = useUser();
+    const router = useRouter();
     const Navbar = [
         {
             name: "Home",
@@ -40,9 +45,14 @@ const Header = () => {
             console.log(err);
         }
     };
+    if (user?.not_registered) {
+        router.push("/register");
+        return;
+    }
 
     return (
         <>
+            <Toaster />
             <nav className="w-full h-auto bg-transparent lg:px-24 md:px-16 sm:px-14 px-4 py-2 ">
                 <div className="justify-between ml-4 mx-auto lg:w-full md:items-center md:flex ">
                     <div>

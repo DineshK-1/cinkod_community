@@ -7,20 +7,22 @@ import { useUser } from "@/store";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const [initialLoader, setInitialLoader] = useState<boolean>(true);
+    const [initialLoader, setInitialLoader] = useState<boolean>(false);
 
     const { user, setUser, logoutUser } = useUser();
+    const router = useRouter();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             try {
                 if (user) {
                     const token = await user.getIdToken();
-
+                    console.log(user);
                     const { data } = await axios
                         .post(
                             "/api/auth/login",
@@ -36,12 +38,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                         });
                     if (data.not_registered) {
                         setUser({
+                            email: user.email ?? "",
+                            name: user.displayName ?? "",
+                            avatar_url: user.photoURL ?? "",
                             not_registered: true,
+                            accessToken: token,
                         });
+                        router.push("/register");
+                        return;
                     }
-
-                    // Cookies.set("accessToken", data.user.accessToken);
+                    Cookies.set("accessToken", data.user.accessToken);
                     toast.success("Logged in successfully.");
+                    console.log(user);
                     setUser(data.user);
                 } else {
                     Cookies.remove("accessToken");

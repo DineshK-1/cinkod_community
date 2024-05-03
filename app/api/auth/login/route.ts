@@ -34,7 +34,7 @@ export async function POST(request: Request) {
             .catch((error) => {
                 return undefined;
             });
-
+        console.log(userDetails);
         if (!userDetails) {
             return new NextResponse(
                 JSON.stringify({
@@ -48,16 +48,6 @@ export async function POST(request: Request) {
             JSON.stringify({
                 user: {
                     accessToken: token,
-                    // collegeId,
-                    // email,
-                    // google_uid,
-                    // isAdminstrator,
-                    // isCoreTeam,
-                    // isLead,
-                    // isMember,
-                    // name,
-                    // phone,
-                    // user_name,
                 },
                 message: "Logged In",
             }),

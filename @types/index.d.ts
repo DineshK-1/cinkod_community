@@ -1,5 +1,4 @@
 export type User = {
-    id: number;
     email: string;
     name: string | null;
     avatar_url: string;
@@ -8,11 +7,14 @@ export type User = {
     college_name: string;
     phone: string;
     bio: string;
-    createdAt: Date;
-    updatedAt: Date;
+    accessToken: string;
 };
 
 export type NotRegisteredUser = {
+    email: string;
+    name: string;
+    avatar_url: string;
+    accessToken: string;
     not_registered: boolean;
 };
 
