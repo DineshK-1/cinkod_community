@@ -2,17 +2,18 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Image from "next/image";
 import Link from "next/link";
+import { Blog } from "@/@types";
 
-const Blog = () => {
-    const cards = Array.from({ length: 9 }).map((_, index) => ({
-        id: index + 1,
-        title: `Title ${index + 1}`,
-        title2: `Writers' Name`,
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum maxime veniam quas repellat nihil impedit dignissimos nemo architecto at est. Nam eum quod cumque deserunt necessitatibus asperiores adipisci temporibus minima ea quae, corrupti ullam impedit dignissimos pariatur natus, blanditiis odio laudantium omnis quo voluptas. Sequi voluptate asperiores quia sapiente consequuntur?",
-        category: index % 2 === 0 ? "Category A" : "Category B",
-        tags: ["Tag A", "Tag B"],
-    }));
+async function getBlogs() {
+    const res = await fetch("http://localhost:3000/api/db/blogs/fetch");
+    const data = await res.json();
+    return data as Blog[];
+}
+
+const BlogsPage = async () => {
+    const blogs = await getBlogs();
+
+    console.log(blogs);
 
     return (
         <section className="blogs bg-background">
@@ -55,49 +56,47 @@ const Blog = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative">
                         {/* Render only three cards */}
-                        {cards
-                            .filter((_, index) => index < 3)
-                            .map((card, index) => (
-                                <div
-                                    key={card.id}
-                                    className={`relative bg-slate-900 rounded-lg shadow-lg overflow-hidden col-span-3  border-2 ${
-                                        index === 0 ? "md:col-span-3" : ""
-                                    }`}
-                                >
-                                    <div className="flex">
-                                        <Image
-                                            src={``}
-                                            alt={`Image${card.id}`}
-                                            className="w-1/3 h-auto object-cover rounded-t-lg"
-                                            width={100}
-                                            height={100}
-                                        />
-                                        <div className="w-2/3 p-4">
-                                            <h2 className="text-lg text-white font-semibold mb-2">
-                                                {card.title}
-                                            </h2>
-                                            <h2 className="text-lg text-white font-semibold mb-2">
-                                                {card.title2}
-                                            </h2>
-                                            <p className="text-white mb-24">
-                                                {card.description}
-                                            </p>
-                                            <div className="flex flex-row gap-3 w-64">
-                                                <button className="bg-yellow-500 hover:bg-yellow-400 text-slate-800 font-normal py-2 px-4 rounded">
-                                                    <Link href="/blogs/blogId">
-                                                        UpVote!
-                                                    </Link>
-                                                </button>
-                                                <button className="bg-yellow-500 hover:bg-yellow-400 text-slate-800 font-normal py-2 px-4 rounded">
-                                                    <Link href="/blogs/blogId">
-                                                        Comment!
-                                                    </Link>
-                                                </button>
-                                            </div>
+                        {blogs.map((card, index) => (
+                            <div
+                                key={card.id}
+                                className={`relative bg-slate-900 rounded-lg shadow-lg overflow-hidden col-span-3  border-2 ${
+                                    index === 0 ? "md:col-span-3" : ""
+                                }`}
+                            >
+                                <div className="flex">
+                                    <Image
+                                        src={``}
+                                        alt={`Image${card.id}`}
+                                        className="w-1/3 h-auto object-cover rounded-t-lg"
+                                        width={100}
+                                        height={100}
+                                    />
+                                    <div className="w-2/3 p-4">
+                                        <h2 className="text-lg text-white font-semibold mb-2">
+                                            {card.title}
+                                        </h2>
+                                        {/* <h2 className="text-lg text-white font-semibold mb-2">
+                                            {card.title2}
+                                        </h2> */}
+                                        <p className="text-white mb-24">
+                                            {card.description}
+                                        </p>
+                                        <div className="flex flex-row gap-3 w-64">
+                                            <button className="bg-yellow-500 hover:bg-yellow-400 text-slate-800 font-normal py-2 px-4 rounded">
+                                                <Link href="/blogs/blogId">
+                                                    UpVote!
+                                                </Link>
+                                            </button>
+                                            <button className="bg-yellow-500 hover:bg-yellow-400 text-slate-800 font-normal py-2 px-4 rounded">
+                                                <Link href="/blogs/blogId">
+                                                    Comment!
+                                                </Link>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-                            ))}
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
@@ -108,4 +107,4 @@ const Blog = () => {
     );
 };
 
-export default Blog;
+export default BlogsPage;

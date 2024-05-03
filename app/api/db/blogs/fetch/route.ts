@@ -6,13 +6,10 @@ export async function GET(req: Request) {
         const prisma = new PrismaClient();
         const blogs = await prisma.blog.findMany({
             where: {
-                published: true,
+                published: false,
             },
         });
-        return {
-            status: 200,
-            body: blogs,
-        };
+        return NextResponse.json(blogs, { status: 200 });
     } catch (e) {
         return NextResponse.json(
             {
