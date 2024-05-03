@@ -3,11 +3,14 @@ import Footer from "../../components/Footer/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import { Blog } from "@/@types";
+import axios from "axios";
 
 async function getBlogs() {
-    const res = await fetch("http://localhost:3000/api/db/blogs/fetch");
-    const data = await res.json();
-    return data as Blog[];
+    const blogs = await axios.get("/api/db/blogs/fetch").catch((err) => {
+        console.log(err);
+        return [];
+    });
+    return blogs as Blog[];
 }
 
 const BlogsPage = async () => {

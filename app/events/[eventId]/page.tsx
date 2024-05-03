@@ -7,9 +7,7 @@ import { Event } from "@/@types";
 
 async function getData(eventId: string) {
     try {
-        const res = await axios.get(
-            `http://localhost:3000/api/db/event/${eventId}`
-        );
+        const res = await axios.get(`/api/db/event/${eventId}`);
         return res.data as Event;
     } catch (err) {
         console.error(err);
