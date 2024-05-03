@@ -5,10 +5,12 @@ import EventPage from "@/components/events/EventPage";
 import { Event } from "@/@types";
 
 async function getData() {
-    const res = await axios.get("/api/db/events/fetch").catch((err) => {
-        console.log(err);
-        return { data: [] };
-    });
+    const res = await axios
+        .get(process.env.NEXT_PUBLIC_HOST_URL + "/api/db/events/fetch")
+        .catch((err) => {
+            console.log(err);
+            return { data: [] };
+        });
 
     return res.data as Event[];
 }

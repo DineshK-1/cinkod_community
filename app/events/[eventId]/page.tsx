@@ -7,7 +7,9 @@ import { Event } from "@/@types";
 
 async function getData(eventId: string) {
     try {
-        const res = await axios.get(`/api/db/event/${eventId}`);
+        const res = await axios.get(
+            process.env.NEXT_PUBLIC_HOST_URL + `/api/db/event/${eventId}`
+        );
         return res.data as Event;
     } catch (err) {
         console.error(err);
