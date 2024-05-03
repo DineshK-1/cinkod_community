@@ -13,7 +13,7 @@ export const AuthContext = createContext({});
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [initialLoader, setInitialLoader] = useState<boolean>(true);
 
-    const { setUser, logoutUser } = useUser();
+    const { user, setUser, logoutUser } = useUser();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -31,20 +31,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                                 },
                             }
                         )
-                        .catch(() => {
-                            signOut(auth);
-                            logoutUser();
-                            toast.error(
-                                "You are not authorized to access this website."
-                            );
-                            return {
-                                data: { user: null },
-                            };
+                        .then((response) => {
+                            return response;
                         });
-                    if (!data.user) {
-                        return;
+                    if (data.not_registered) {
+                        setUser({
+                            not_registered: true,
+                        });
                     }
-                    Cookies.set("accessToken", data.user.accessToken);
+
+                    // Cookies.set("accessToken", data.user.accessToken);
                     toast.success("Logged in successfully.");
                     setUser(data.user);
                 } else {

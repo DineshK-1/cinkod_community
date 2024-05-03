@@ -4,6 +4,8 @@ import logo from "@/public/Home/logo.png";
 import { FaTimes, FaBars } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "@/firebase/firebase";
 
 const Header = () => {
     const [navbar, setNavbar] = useState(false);
@@ -30,8 +32,13 @@ const Header = () => {
         },
     ];
 
-    const handleLogin = () => {
-        console.log("Login/Signup");
+    const handleLogin = async () => {
+        const provider = new GoogleAuthProvider();
+        try {
+            signInWithPopup(auth, provider);
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     return (

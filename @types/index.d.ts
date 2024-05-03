@@ -12,6 +12,10 @@ export type User = {
     updatedAt: Date;
 };
 
+export type NotRegisteredUser = {
+    not_registered: boolean;
+};
+
 export type LoggedInCollegeAdmin = {
     accessToken: string;
     email: string;

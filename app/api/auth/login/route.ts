@@ -32,8 +32,17 @@ export async function POST(request: Request) {
                 return user;
             })
             .catch((error) => {
-                throw new Error(error);
+                return undefined;
             });
+
+        if (!userDetails) {
+            return new NextResponse(
+                JSON.stringify({
+                    not_registered: true,
+                }),
+                { status: 200 }
+            );
+        }
 
         return new NextResponse(
             JSON.stringify({

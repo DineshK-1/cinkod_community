@@ -1,10 +1,10 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { LoggedInCollegeAdmin } from "./@types";
+import { LoggedInCollegeAdmin, NotRegisteredUser, User } from "./@types";
 
 interface UserState {
-    user: LoggedInCollegeAdmin | null;
-    setUser: (user: LoggedInCollegeAdmin) => void;
+    user: User | NotRegisteredUser | null;
+    setUser: (user: User | NotRegisteredUser) => void;
     logoutUser: () => void;
 }
 const initialUserState = { user: null };
