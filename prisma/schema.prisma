@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,34 +8,30 @@ datasource db {
 }
 
 model User {
-  id           Int      @id @default(autoincrement())
-  email        String   @unique
-  name         String?
-  avatar_url   String
-  user_name    String   @unique
-  google_uid   String   @unique
-  college_name String
-  phone        String
-  bio          String
-  socials      Socials[]
-
-  comments    Comment[]
-
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt @default(now())
-
-  lead College? @relation("college_lead")
-
-  core_team_colleges College[] @relation("Core_team_members")
+  id                 Int       @id @default(autoincrement())
+  email              String    @unique
+  name               String?
+  avatar_url         String
+  user_name          String    @unique
+  google_uid         String    @unique
+  college_name       String
+  phone              String
+  bio                String
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @default(now()) @updatedAt
+  lead               College?  @relation("college_lead")
+  comments           Comment[]
+  socials            Socials[]
   member_of_colleges College[] @relation("College_Members")
+  core_team_colleges College[] @relation("Core_team_members")
 }
 
-model Socials{
-  id          Int      @id @default(autoincrement())
-  name        String
-  url         String
-  user        User     @relation(fields: [userId], references: [id])
-  userId      Int
+model Socials {
+  id     Int    @id @default(autoincrement())
+  name   String
+  url    String
+  userId Int
+  user   User   @relation(fields: [userId], references: [id])
 }
 
 model CinkodAdmin {
@@ -53,88 +43,25 @@ model CinkodAdmin {
   google_uid String   @unique
   phone      String
   createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
 }
 
 model CollegeAdmin {
-  id         Int     @id @default(autoincrement())
-  email      String  @unique
-  name       String
-  user_name  String  @unique
-  google_uid String? @unique
-  phone      String
-
-  college   College @relation(fields: [collegeId], references: [id])
-  collegeId Int
-
+  id             Int      @id @default(autoincrement())
+  email          String   @unique
+  name           String
+  user_name      String   @unique
+  google_uid     String?  @unique
+  phone          String
+  collegeId      Int
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @default(now()) @updatedAt
   isAdminstrator Boolean
-  isLead         Boolean
   isCoreTeam     Boolean
+  isLead         Boolean
   isMember       Boolean
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt @default(now())
+  college        College  @relation(fields: [collegeId], references: [id])
 }
-
-// model AdminPermissions {
-//   id          Int       @id @default(autoincrement())
-
-//   collegeAdmin        CollegeAdmin      
-//   adminId      Int
-
-//   isAdminstrator Boolean
-//   isLead Boolean
-//   isCoreTeam Boolean
-//   isMember Boolean
-
-// canCreateCollege Boolean
-// canCreateEvent Boolean
-// canCreatePost Boolean
-// canCreateUser Boolean
-// canCreateAdmin Boolean
-// canCreateCinkodAdmin Boolean
-// canCreateCollegeAdmin Boolean
-// canCreateEventAdmin Boolean
-// canCreatePostAdmin Boolean
-// canCreateUserAdmin Boolean
-// canCreateCollegeMember Boolean
-// canCreateEventMember Boolean
-// canCreatePostMember Boolean
-// canCreateUserMember Boolean
-// canCreateCollegeAdminMember Boolean
-// canCreateEventAdminMember Boolean
-// canCreatePostAdminMember Boolean
-// canCreateUserAdminMember Boolean
-// canCreateCinkodAdminMember Boolean
-// canCreateCollegeAdminAdmin Boolean
-// canCreateEventAdminAdmin Boolean
-// canCreatePostAdminAdmin Boolean
-// canCreateUserAdminAdmin Boolean
-// canCreateCinkodAdminAdmin Boolean
-// canCreateCollegeAdminMemberAdmin Boolean
-// canCreateEventAdminMemberAdmin Boolean
-// canCreatePostAdminMemberAdmin Boolean
-// canCreateUserAdminMemberAdmin Boolean
-// canCreateCinkodAdminMemberAdmin Boolean
-// canCreateCollegeAdminAdminAdmin Boolean
-// canCreateEventAdminAdminAdmin Boolean
-// canCreatePostAdminAdminAdmin Boolean
-// canCreateUserAdminAdminAdmin Boolean
-// canCreateCinkodAdminAdminAdmin Boolean
-// canCreateCollegeAdminMemberAdminAdmin Boolean
-// canCreateEventAdminMemberAdminAdmin Boolean
-// canCreatePostAdminMemberAdminAdmin Boolean
-// canCreateUserAdminMemberAdminAdmin Boolean
-// canCreateCinkodAdminMemberAdminAdmin Boolean
-// canCreateCollegeAdminAdminAdminAdmin Boolean
-// canCreateEventAdminAdminAdminAdmin Boolean
-// canCreatePostAdminAdminAdminAdmin Boolean
-// canCreateUserAdminAdminAdminAdmin Boolean
-// canCreateCinkodAdminAdminAdminAdmin Boolean
-
-//   createdAt   DateTime  @default(now())
-//   updatedAt   DateTime  @updatedAt
-// }
 
 model Event {
   id          Int      @id @default(autoincrement())
@@ -145,10 +72,12 @@ model Event {
   from        DateTime
   to          DateTime
   maxSlots    Int
-  college     College  @relation(fields: [collegeId], references: [id])
+  published  Boolean @default(false)
+
   collegeId   Int
   createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+  college     College  @relation(fields: [collegeId], references: [id])
 }
 
 model College {
@@ -156,8 +85,6 @@ model College {
   name          String         @unique
   email         String         @unique
   leadId        Int            @unique
-  lead          User           @relation("college_lead", fields: [leadId], references: [id])
-  core_team     User[]         @relation("Core_team_members")
   description   String
   banner_url    String
   members_count Int
@@ -165,42 +92,40 @@ model College {
   photos        String[]
   videos        String[]
   socials       String[]
-
-  members       User[]         @relation("College_Members")
-
-  events        Event[]
-
-  admins        CollegeAdmin[]
-
-  blogs        Blog[]
   createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt @default(now())
+  updatedAt     DateTime       @default(now()) @updatedAt
+  blogs         Blog[]
+  lead          User           @relation("college_lead", fields: [leadId], references: [id])
+  admins        CollegeAdmin[]
+  events        Event[]
+  members       User[]         @relation("College_Members")
+  core_team     User[]         @relation("Core_team_members")
 }
 
-
 model Blog {
-  id          Int      @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   title       String
   description String
   banner_url  String
-  college     College  @relation(fields: [collegeId], references: [id])
   collegeId   Int
   upvotes     Int
-  shares     Int
-  comments    Comment[]
+  shares      Int
   views       Int
+  published  Boolean @default(false)
 
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt @default(now())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now()) @updatedAt
+  college     College   @relation(fields: [collegeId], references: [id])
+  comments    Comment[]
 }
 
 model Comment {
-  id          Int      @id @default(autoincrement())
-  text        String
-  user        User     @relation(fields: [userId], references: [id])
-  userId      Int
-  blog        Blog     @relation(fields: [blogId], references: [id])
-  blogId      Int
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt @default(now())
+  id        Int      @id @default(autoincrement())
+  text      String
+  userId    Int
+  blogId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  blog      Blog     @relation(fields: [blogId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
 }
