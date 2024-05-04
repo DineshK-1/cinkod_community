@@ -14,7 +14,8 @@ interface formData {
 }
 
 export default function RegisterPage() {
-    const { user } = useUser();
+    const { user, setUser } = useUser();
+    const [loading, setLoading] = useState<boolean>(false);
     const [formData, setFormData] = useState<formData>({
         name: user?.name ?? "",
         username: "",
@@ -26,8 +27,8 @@ export default function RegisterPage() {
     const router = useRouter();
 
     const handleSubmit = async (e: any) => {
+        setLoading(true);
         e.preventDefault();
-        console.log(user);
         await axios
             .post("/api/auth/register", {
                 ...formData,
@@ -37,18 +38,20 @@ export default function RegisterPage() {
             .then((response) => {
                 if (response.status === 200) {
                     toast.success("Registered successfully!");
-                    router.push("/");
+                    setUser(response.data.user);
                 }
-                console.log(response);
             })
             .catch((error) => {
                 if (error.response.status === 409) {
                     toast.error("Username/email already exists!");
                 }
+            })
+            .finally(() => {
+                setLoading(false);
             });
     };
 
-    if (!user?.not_registered) router.push("/");
+    if (user?.not_registered === false) router.push("/");
 
     return (
         <>
@@ -150,6 +153,7 @@ export default function RegisterPage() {
                         <button
                             type="submit"
                             className="bg-primary p-2 rounded-xl text-black font-medium hover:bg-transparent hover:text-white transition-all border border-transparent hover:border-primary"
+                            disabled={loading}
                         >
                             Submit
                         </button>

@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { LoggedInCollegeAdmin, NotRegisteredUser, User } from "./@types";
+import { User } from "./@types";
 
 interface UserState {
     user: User | null;

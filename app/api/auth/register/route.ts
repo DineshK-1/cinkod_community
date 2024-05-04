@@ -39,7 +39,23 @@ export async function POST(request: Request) {
             },
         });
 
-        return new NextResponse(JSON.stringify({ user }), { status: 200 });
+        return new NextResponse(
+            JSON.stringify({
+                message: "User Registered Successfully!",
+                user: {
+                    accessToken: body.accessToken,
+                    email: user.email,
+                    name: user.name,
+                    username: user.user_name,
+                    phone: user.phone,
+                    college: user.college_name,
+                    avatar_url: user.avatar_url,
+                    bio: user.bio,
+                    not_registered: false,
+                },
+            }),
+            { status: 200 }
+        );
     } catch (error) {
         console.log(error);
         if (error instanceof Prisma.PrismaClientKnownRequestError) {
