@@ -68,6 +68,8 @@ export async function POST(
             },
         });
 
+        console.log(registration);
+
         return new NextResponse(
             JSON.stringify({
                 message: "User Registered Successfully!",
