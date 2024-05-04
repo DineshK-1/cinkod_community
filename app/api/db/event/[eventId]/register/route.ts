@@ -53,6 +53,21 @@ export async function POST(
             );
         }
 
+        const registration = await prisma.registration.create({
+            data: {
+                user: {
+                    connect: {
+                        id: user.id,
+                    },
+                },
+                event: {
+                    connect: {
+                        id: event.id,
+                    },
+                },
+            },
+        });
+
         return new NextResponse(
             JSON.stringify({
                 message: "User Registered Successfully!",

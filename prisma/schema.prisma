@@ -8,22 +8,23 @@ datasource db {
 }
 
 model User {
-  id                 Int       @id @default(autoincrement())
-  email              String    @unique
+  id                 Int            @id @default(autoincrement())
+  email              String         @unique
   name               String?
   avatar_url         String
-  user_name          String    @unique
-  google_uid         String    @unique
+  user_name          String         @unique
+  google_uid         String         @unique
   college_name       String
   phone              String
   bio                String
-  createdAt          DateTime  @default(now())
-  updatedAt          DateTime  @default(now()) @updatedAt
-  lead               College?  @relation("college_lead")
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @default(now()) @updatedAt
+  lead               College?       @relation("college_lead")
   comments           Comment[]
+  Registration       Registration[]
   socials            Socials[]
-  member_of_colleges College[] @relation("College_Members")
-  core_team_colleges College[] @relation("Core_team_members")
+  member_of_colleges College[]      @relation("College_Members")
+  core_team_colleges College[]      @relation("Core_team_members")
 }
 
 model Socials {
@@ -64,19 +65,20 @@ model CollegeAdmin {
 }
 
 model Event {
-  id          Int      @id @default(autoincrement())
-  name        String
-  description String
-  banner_url  String
-  venue       String
-  from        DateTime
-  to          DateTime
-  maxSlots    Int
-  collegeId   Int
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now()) @updatedAt
-  published   Boolean  @default(false)
-  college     College  @relation(fields: [collegeId], references: [id])
+  id           Int            @id @default(autoincrement())
+  name         String
+  description  String
+  banner_url   String
+  venue        String
+  from         DateTime
+  to           DateTime
+  maxSlots     Int
+  collegeId    Int
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @default(now()) @updatedAt
+  published    Boolean        @default(false)
+  college      College        @relation(fields: [collegeId], references: [id])
+  Registration Registration[]
 }
 
 model College {
@@ -126,4 +128,13 @@ model Comment {
   updatedAt DateTime @default(now()) @updatedAt
   blog      Blog     @relation(fields: [blogId], references: [id])
   user      User     @relation(fields: [userId], references: [id])
+}
+
+model Registration {
+  id        Int      @id @default(autoincrement())
+  eventId   Int
+  userId    Int
+  createdAt DateTime @default(now())
+  Event     Event    @relation(fields: [eventId], references: [id])
+  User      User     @relation(fields: [userId], references: [id])
 }
