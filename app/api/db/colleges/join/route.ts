@@ -51,6 +51,30 @@ export async function POST(request: Request) {
                 { status: 404 }
             );
         }
+
+        const userCollege = await prisma.collegeMember.create({
+            data: {
+                user: {
+                    connect: {
+                        id: user.id,
+                    },
+                },
+                college: {
+                    connect: {
+                        id: college.id,
+                    },
+                },
+            },
+        });
+
+        console.log(userCollege);
+
+        return new NextResponse(
+            JSON.stringify({
+                message: "Joined college successfully!",
+            }),
+            { status: 200 }
+        );
     } catch (e) {
         console.error(e);
         return new NextResponse(

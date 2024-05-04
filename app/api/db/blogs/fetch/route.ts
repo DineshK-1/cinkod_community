@@ -9,6 +9,7 @@ export async function GET(req: Request) {
                 published: false,
             },
         });
+
         return NextResponse.json(blogs, { status: 200 });
     } catch (e) {
         return NextResponse.json(

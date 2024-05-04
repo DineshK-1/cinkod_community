@@ -4,6 +4,7 @@ import Mad from "@/public/ChaptersCollege/madhav.png";
 import College from "@/public/ChaptersCollege/college.png";
 import Card from "@/components/chapters-college/card";
 import Image from "next/image";
+import JoinButton from "@/components/chapters-college/JoinButton";
 
 function CollegePage() {
     return (
@@ -38,10 +39,11 @@ function CollegePage() {
                             />
                         </div>
 
-                        <div className="text-white w-full flex my-7 justify-start ">
-                            <p className="text-left font-medium text-3xl">
+                        <div className="text-white w-full flex my-7 justify-between">
+                            <h1 className="text-left font-medium text-3xl">
                                 Madhav University of Computer Science
-                            </p>
+                            </h1>
+                            <JoinButton />
                         </div>
 
                         <div className="about flex flex-col items-center h-full w-full">
