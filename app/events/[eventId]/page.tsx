@@ -27,179 +27,193 @@ const EventPage = async ({ params }: { params: { eventId: string } }) => {
     return (
         <section className="event-display">
             <Header />
-            <div className="text-white text-center font-bold text-2xl md:text-5xl lg:text-6xl py-8 ">
-                <h1>Welcome to</h1>
-                <h1 className="text-Blue">
+            <div className="text-white text-center font-bold py-8">
+                <h1 className="text-2xl md:text-5xl lg:text-6xl">Welcome to</h1>
+                <h1 className="text-Blue text-2xl md:text-5xl lg:text-6xl">
                     CINKOD <span className="text-Yellow">DEVELOPER</span>{" "}
                     COMMUNITY
                 </h1>
             </div>
-            <div className="h-auto bg-gradient-to-br from-Blue/20 to-transparent rounded-3xl mx-4 md:mx-32 px-5 md:px-20 w-full md:w-auto">
+            <div className="h-auto bg-gradient-to-br from-Blue/20 to-transparent rounded-3xl mt-4 mb-16 px-5 md:px-20 md:mx-32">
                 <button
-                    className="border-2 border-Yellow text-Yellow px-2 py-2 mt-4"
+                    className="text-Yellow px-2 py-2 mt-4 text-lg"
                     type="submit"
                 >
-                    Back
+                    🔙
                 </button>
 
-                <h1 className="text-white font-bold text-3xl py-8">
-                    {event.name}
-                </h1>
-                <div className="flex flex-col md:flex-row justify-center md:justify-start items-center">
+                <div className="heading grid grid-cols-1 md:grid-cols-2 gap-5 m-10">
+                    <div className="maindeets flex flex-col gap-6">
+                        <h1 className="text-white font-semibold text-2xl md:text-3xl mt-4">
+                            {event.name}
+                        </h1>
+                        <p className="text-sm">📍 {event.venue}</p>
+                        <p className="">{event.description}</p>
+                    </div>
                     <Image
                         src={exampleImage}
                         alt="Description of your image"
-                        className="w-full max-h-96 mx-3 object-cover"
+                        className="w-full max-h-96 object-cover rounded-xl"
                     />
                 </div>
-                <h1 className="text-white font-bold text-3xl py-6">
-                    About the event
-                </h1>
-                <div className="text-white">{event.description}</div>
 
-                <div className="innerWidth py-8">
-                    <h1 className="text-white font-bold text-3xl">
-                        {event.venue}
-                    </h1>
-                    <div className="flex flex-col md:flex-row py-2 text-white font-normal">
-                        <p className="mb-4 md:mb-0 md:mr-4">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Error vel harum dolores tenetur dolorem
-                            libero.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Error vel harum dolores tenetur dolorem
-                            libero.
-                        </p>
+                <div className="moreinfo flex flex-col mx-4 md:mx-16 text-justify">
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and
+                        scrambled it to make a type specimen book. It has
+                        survived not only five centuries, but also the leap into
+                        electronic typesetting, remaining essentially unchanged.
+                        It was popularised in the 1960s with the release of
+                        Letraset sheets containing Lorem Ipsum passages, and
+                        more recently with desktop publishing software like
+                        Aldus PageMaker including versions of Lorem Ipsum.Why do
+                        we use it?It is a long established fact that a reader
+                        will be distracted by the readable content of a page
+                        when looking at its layout. The point of using Lorem
+                        Ipsum is that it has a more-or-less normal distribution
+                        of letters, as opposed to using 'Content here, content
+                        here', making it look like readable English. Many
+                        desktop publishing packages and web page editors now use
+                        Lorem Ipsum as their default model text, and a search
+                        for 'lorem ipsum' will uncover many web sites still in
+                        their infancy. Various versions have evolved over the
+                        years, sometimes by a
+                    </p>
+                </div>
+
+                <div className="rsvp flex flex-col items-center m-6">
+                    <div className="w-64 mb-2">
+                        <button className="w-full text-black bg-amber-300 border-2 border-black rounded-2xl text-xl p-3 font-semibold">
+                            RSVP NOW!
+                        </button>
                     </div>
-                    <div className="flex flex-col md:flex-row justify-around py-8 px-48 text-white text-center md:text-left">
-                        <div className="flex flex-wrap justify-center md:justify-between   w-full">
-                            <div className="flex flex-wrap justify-between md:justify-between gap-3 mx-4">
-                                <div className="text-center mb-4 md:mb-0 relative">
-                                    <div className="relative inline-block px-8">
-                                        <Image
-                                            src={exampleImage}
-                                            alt="Supporter 1"
-                                            className="w-24 h-24 rounded-full object-cover mx-auto md:mx-0"
-                                        />
-                                        <a
-                                            href="YOUR_LINKEDIN_PROFILE"
-                                            className="absolute bottom-0 left-14 transform translate-x-1/2 translate-y-1/2"
+                    <a
+                        href="#"
+                        className="text-sm text-center text-amber-300 underline cursor-pointer"
+                    >
+                        More info
+                    </a>
+                </div>
+
+                <div className="flex flex-col md:flex-row justify-around py-8 px-48 text-white text-center md:text-left mt-10">
+                    <div className="flex flex-wrap justify-center md:justify-between   w-full">
+                        <div className="flex flex-wrap justify-between md:justify-between gap-3 mx-4">
+                            <div className="text-center mb-4 md:mb-0 relative">
+                                <div className="relative inline-block px-8">
+                                    <Image
+                                        src={exampleImage}
+                                        alt="Supporter 1"
+                                        className="w-24 h-24 rounded-full object-cover mx-auto md:mx-0"
+                                    />
+                                    <a
+                                        href="YOUR_LINKEDIN_PROFILE"
+                                        className="absolute bottom-0 left-14 transform translate-x-1/2 translate-y-1/2"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="h-6 w-6 text-blue-500"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
                                         >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="h-6 w-6 text-blue-500"
-                                                viewBox="0 0 20 20"
-                                                fill="currentColor"
-                                            >
-                                                <path
-                                                    fillRule="evenodd"
-                                                    d="M3 4a2 2 0 00-2 2v8a2 2 0 002 2h4v-6H5V9h2V7.5c0-1.58.92-2.47 2.29-2.47 1.08 0 1.71.54 1.71 1.46V9h2v1h-2v6h3a2 2 0 002-2v-8a2 2 0 00-2-2H3Z"
-                                                    clipRule="evenodd"
-                                                />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                    <p>Organiser</p>
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M3 4a2 2 0 00-2 2v8a2 2 0 002 2h4v-6H5V9h2V7.5c0-1.58.92-2.47 2.29-2.47 1.08 0 1.71.54 1.71 1.46V9h2v1h-2v6h3a2 2 0 002-2v-8a2 2 0 00-2-2H3Z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                    </a>
                                 </div>
-                                <div className="text-center mb-4 md:mb-0 relative">
-                                    <div className="relative inline-block px-8">
-                                        <Image
-                                            src={exampleImage}
-                                            alt="Supporter 1"
-                                            className="w-24 h-24 rounded-full object-cover mx-auto md:mx-0"
-                                        />
-                                        <a
-                                            href="YOUR_LINKEDIN_PROFILE"
-                                            className="absolute bottom-0 left-14 transform translate-x-1/2 translate-y-1/2"
+                                <p>Organiser</p>
+                            </div>
+                            <div className="text-center mb-4 md:mb-0 relative">
+                                <div className="relative inline-block px-8">
+                                    <Image
+                                        src={exampleImage}
+                                        alt="Supporter 1"
+                                        className="w-24 h-24 rounded-full object-cover mx-auto md:mx-0"
+                                    />
+                                    <a
+                                        href="YOUR_LINKEDIN_PROFILE"
+                                        className="absolute bottom-0 left-14 transform translate-x-1/2 translate-y-1/2"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="h-6 w-6 text-blue-500"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
                                         >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="h-6 w-6 text-blue-500"
-                                                viewBox="0 0 20 20"
-                                                fill="currentColor"
-                                            >
-                                                <path
-                                                    fillRule="evenodd"
-                                                    d="M3 4a2 2 0 00-2 2v8a2 2 0 002 2h4v-6H5V9h2V7.5c0-1.58.92-2.47 2.29-2.47 1.08 0 1.71.54 1.71 1.46V9h2v1h-2v6h3a2 2 0 002-2v-8a2 2 0 00-2-2H3Z"
-                                                    clipRule="evenodd"
-                                                />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                    <p>Organiser</p>
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M3 4a2 2 0 00-2 2v8a2 2 0 002 2h4v-6H5V9h2V7.5c0-1.58.92-2.47 2.29-2.47 1.08 0 1.71.54 1.71 1.46V9h2v1h-2v6h3a2 2 0 002-2v-8a2 2 0 00-2-2H3Z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                    </a>
                                 </div>
-                                <div className="text-center mb-4 md:mb-0 relative px-8">
-                                    <div className="relative inline-block">
-                                        <Image
-                                            src={exampleImage}
-                                            alt="Supporter 1"
-                                            className="w-24 h-24 rounded-full object-cover mx-auto md:mx-0"
-                                        />
-                                        <a
-                                            href="YOUR_LINKEDIN_PROFILE"
-                                            className="absolute bottom-0 right-12 transform translate-x-1/2 translate-y-1/2"
+                                <p>Organiser</p>
+                            </div>
+                            <div className="text-center mb-4 md:mb-0 relative px-8">
+                                <div className="relative inline-block">
+                                    <Image
+                                        src={exampleImage}
+                                        alt="Supporter 1"
+                                        className="w-24 h-24 rounded-full object-cover mx-auto md:mx-0"
+                                    />
+                                    <a
+                                        href="YOUR_LINKEDIN_PROFILE"
+                                        className="absolute bottom-0 right-12 transform translate-x-1/2 translate-y-1/2"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="h-6 w-6 text-blue-500"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
                                         >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="h-6 w-6 text-blue-500"
-                                                viewBox="0 0 20 20"
-                                                fill="currentColor"
-                                            >
-                                                <path
-                                                    fillRule="evenodd"
-                                                    d="M3 4a2 2 0 00-2 2v8a2 2 0 002 2h4v-6H5V9h2V7.5c0-1.58.92-2.47 2.29-2.47 1.08 0 1.71.54 1.71 1.46V9h2v1h-2v6h3a2 2 0 002-2v-8a2 2 0 00-2-2H3Z"
-                                                    clipRule="evenodd"
-                                                />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                    <p>Organiser</p>
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M3 4a2 2 0 00-2 2v8a2 2 0 002 2h4v-6H5V9h2V7.5c0-1.58.92-2.47 2.29-2.47 1.08 0 1.71.54 1.71 1.46V9h2v1h-2v6h3a2 2 0 002-2v-8a2 2 0 00-2-2H3Z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                    </a>
                                 </div>
-                                <div className="text-center mb-4 md:mb-0 relative">
-                                    <div className="relative inline-block px-8">
-                                        <Image
-                                            src={exampleImage}
-                                            alt="Supporter 1"
-                                            className="w-24 h-24 rounded-full object-cover mx-auto md:mx-0"
-                                        />
-                                        <a
-                                            href="YOUR_LINKEDIN_PROFILE"
-                                            className="absolute bottom-0 left-14 transform translate-x-1/2 translate-y-1/2"
+                                <p>Organiser</p>
+                            </div>
+                            <div className="text-center mb-4 md:mb-0 relative">
+                                <div className="relative inline-block px-8">
+                                    <Image
+                                        src={exampleImage}
+                                        alt="Supporter 1"
+                                        className="w-24 h-24 rounded-full object-cover mx-auto md:mx-0"
+                                    />
+                                    <a
+                                        href="YOUR_LINKEDIN_PROFILE"
+                                        className="absolute bottom-0 left-14 transform translate-x-1/2 translate-y-1/2"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="h-6 w-6 text-blue-500"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
                                         >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="h-6 w-6 text-blue-500"
-                                                viewBox="0 0 20 20"
-                                                fill="currentColor"
-                                            >
-                                                <path
-                                                    fillRule="evenodd"
-                                                    d="M3 4a2 2 0 00-2 2v8a2 2 0 002 2h4v-6H5V9h2V7.5c0-1.58.92-2.47 2.29-2.47 1.08 0 1.71.54 1.71 1.46V9h2v1h-2v6h3a2 2 0 002-2v-8a2 2 0 00-2-2H3Z"
-                                                    clipRule="evenodd"
-                                                />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                    <p>Organiser</p>
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M3 4a2 2 0 00-2 2v8a2 2 0 002 2h4v-6H5V9h2V7.5c0-1.58.92-2.47 2.29-2.47 1.08 0 1.71.54 1.71 1.46V9h2v1h-2v6h3a2 2 0 002-2v-8a2 2 0 00-2-2H3Z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                    </a>
                                 </div>
+                                <p>Organiser</p>
                             </div>
                         </div>
                     </div>
-                    <div className="flex justify-center items-center flex-col">
-                        <button className="bg-transparent text-Blue border-2 border-Blue w-24 flex justify-center">
-                            RSVP
-                        </button>
-                        <a
-                            href="#"
-                            className="text-Yellow text-2xl font-medium flex justify-center py-8 underline"
-                        >
-                            CLICK HERE FOR MORE DETAILS
-                        </a>
-                    </div>
                 </div>
             </div>
+
             <Footer />
         </section>
     );
