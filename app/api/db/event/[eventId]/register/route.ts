@@ -53,14 +53,14 @@ export async function POST(
             );
         }
 
-        const registration = await prisma.registration.create({
+        const registration = await prisma.eventRegisteration.create({
             data: {
-                user: {
+                User: {
                     connect: {
                         id: user.id,
                     },
                 },
-                event: {
+                Event: {
                     connect: {
                         id: event.id,
                     },

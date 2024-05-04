@@ -2,8 +2,8 @@ import { getUserUID } from "@/firebase/firebaseAdmin";
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 
-export async function POST(request: Request){
-    try{
+export async function POST(request: Request) {
+    try {
         const body = (await request.json()) as {
             accessToken: string;
             collegeId: string;
@@ -11,7 +11,7 @@ export async function POST(request: Request){
 
         const uid = await getUserUID(body.accessToken);
 
-        if(!uid){
+        if (!uid) {
             return new NextResponse(
                 JSON.stringify({
                     error: "User not found!",
@@ -28,7 +28,7 @@ export async function POST(request: Request){
             },
         });
 
-        if(!user){
+        if (!user) {
             return new NextResponse(
                 JSON.stringify({
                     error: "User not found!",
@@ -43,7 +43,7 @@ export async function POST(request: Request){
             },
         });
 
-        if(!college){
+        if (!college) {
             return new NextResponse(
                 JSON.stringify({
                     error: "College not found!",
@@ -51,7 +51,13 @@ export async function POST(request: Request){
                 { status: 404 }
             );
         }
-
-
+    } catch (e) {
+        console.error(e);
+        return new NextResponse(
+            JSON.stringify({
+                error: "Internal Server Error!",
+            }),
+            { status: 500 }
+        );
     }
 }
