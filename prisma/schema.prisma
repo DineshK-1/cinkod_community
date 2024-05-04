@@ -8,24 +8,23 @@ datasource db {
 }
 
 model User {
-  id                 Int       @id @default(autoincrement())
-  email              String    @unique
+  id                 Int                  @id @default(autoincrement())
+  email              String               @unique
   name               String?
   avatar_url         String
-  user_name          String    @unique
-  google_uid         String    @unique
+  user_name          String               @unique
+  google_uid         String               @unique
   college_name       String
   phone              String
   bio                String
-  createdAt          DateTime  @default(now())
-  updatedAt          DateTime  @default(now()) @updatedAt
-  lead               College?  @relation("college_lead")
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @default(now()) @updatedAt
+  lead               College?             @relation("college_lead")
+  CollegeMember      CollegeMember[]
   comments           Comment[]
+  EventRegisteration EventRegisteration[]
   socials            Socials[]
-  member_of_colleges College[] @relation("College_Members")
-  core_team_colleges College[] @relation("Core_team_members")
-
-  registrations      Registration[]
+  core_team_colleges College[]            @relation("Core_team_members")
 }
 
 model Socials {
@@ -66,38 +65,27 @@ model CollegeAdmin {
 }
 
 model Event {
-  id          Int      @id @default(autoincrement())
-  name        String
-  description String
-  banner_url  String
-  venue       String
-  from        DateTime
-  to          DateTime
-  maxSlots    Int
-  published  Boolean @default(false)
-
-  collegeId   Int
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now()) @updatedAt
-  college     College  @relation(fields: [collegeId], references: [id])
-
-  registerations  Registration[]
-}
-
-model Registration {
-  id        Int      @id @default(autoincrement())
-  eventId   Int
-  userId    Int
-  createdAt DateTime @default(now())
-  event     Event    @relation(fields: [eventId], references: [id])
-  user      User     @relation(fields: [userId], references: [id])
+  id                 Int                  @id @default(autoincrement())
+  name               String
+  description        String
+  banner_url         String
+  venue              String
+  from               DateTime
+  to                 DateTime
+  maxSlots           Int
+  collegeId          Int
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @default(now()) @updatedAt
+  published          Boolean              @default(false)
+  college            College              @relation(fields: [collegeId], references: [id])
+  EventRegisteration EventRegisteration[]
 }
 
 model College {
-  id            Int            @id @default(autoincrement())
-  name          String         @unique
-  email         String         @unique
-  leadId        Int            @unique
+  id            Int             @id @default(autoincrement())
+  name          String          @unique
+  email         String          @unique
+  leadId        Int             @unique
   description   String
   banner_url    String
   members_count Int
@@ -105,14 +93,14 @@ model College {
   photos        String[]
   videos        String[]
   socials       String[]
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @default(now()) @updatedAt
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @default(now()) @updatedAt
   blogs         Blog[]
-  lead          User           @relation("college_lead", fields: [leadId], references: [id])
+  lead          User            @relation("college_lead", fields: [leadId], references: [id])
   admins        CollegeAdmin[]
+  CollegeMember CollegeMember[]
   events        Event[]
-  members       User[]         @relation("College_Members")
-  core_team     User[]         @relation("Core_team_members")
+  core_team     User[]          @relation("Core_team_members")
 }
 
 model Blog {
@@ -124,10 +112,9 @@ model Blog {
   upvotes     Int
   shares      Int
   views       Int
-  published  Boolean @default(false)
-
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @default(now()) @updatedAt
+  published   Boolean   @default(false)
   college     College   @relation(fields: [collegeId], references: [id])
   comments    Comment[]
 }
@@ -141,4 +128,26 @@ model Comment {
   updatedAt DateTime @default(now()) @updatedAt
   blog      Blog     @relation(fields: [blogId], references: [id])
   user      User     @relation(fields: [userId], references: [id])
+}
+
+model CollegeMember {
+  id        Int     @id @default(autoincrement())
+  userId    Int
+  collegeId Int
+  isCore    Boolean @default(false)
+  College   College @relation(fields: [collegeId], references: [id])
+  User      User    @relation(fields: [userId], references: [id])
+
+  @@unique([userId, collegeId])
+}
+
+model EventRegisteration {
+  id        Int      @id @default(autoincrement())
+  eventId   Int
+  userId    Int
+  createdAt DateTime @default(now())
+  Event     Event    @relation(fields: [eventId], references: [id])
+  User      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, eventId])
 }
