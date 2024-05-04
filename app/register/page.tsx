@@ -48,6 +48,8 @@ export default function RegisterPage() {
             });
     };
 
+    if (!user?.not_registered) router.push("/");
+
     return (
         <>
             <Toaster />

@@ -2,18 +2,10 @@ export type User = {
     email: string;
     name: string | null;
     avatar_url: string;
-    user_name: string;
-    google_uid: string;
-    college_name: string;
-    phone: string;
-    bio: string;
-    accessToken: string;
-};
-
-export type NotRegisteredUser = {
-    email: string;
-    name: string;
-    avatar_url: string;
+    user_name?: string;
+    college_name?: string;
+    phone?: string;
+    bio?: string;
     accessToken: string;
     not_registered: boolean;
 };

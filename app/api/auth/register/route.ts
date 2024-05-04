@@ -39,8 +39,6 @@ export async function POST(request: Request) {
             },
         });
 
-        console.log(user);
-
         return new NextResponse(JSON.stringify({ user }), { status: 200 });
     } catch (error) {
         console.log(error);

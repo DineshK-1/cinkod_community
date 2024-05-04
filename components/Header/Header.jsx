@@ -105,17 +105,29 @@ const Header = () => {
                             ))}
                         </ul>
                     </div>
-
-                    <div className="hidden md:block">
-                        <div className="flex items-center">
-                            <button
-                                onClick={handleLogin}
-                                className="bg-Yellow text-[1.1rem] font-semibold text-black px-4 py-1.5 hover:bg-yellow-600 ease-out duration-1000 rounded lg:ml-10 md:ml-6"
-                            >
-                                Login/Signup
-                            </button>
+                    {user ? (
+                        <div className="hidden md:block">
+                            <div className="flex items-center">
+                                <button
+                                    onClick={() => router.push("/profile")}
+                                    className="bg-Yellow text-[1.1rem] font-semibold text-black px-4 py-1.5 hover:bg-yellow-600 ease-out duration-1000 rounded lg:ml-10 md:ml-6"
+                                >
+                                    Profile
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    ) : (
+                        <div className="hidden md:block">
+                            <div className="flex items-center">
+                                <button
+                                    onClick={handleLogin}
+                                    className="bg-Yellow text-[1.1rem] font-semibold text-black px-4 py-1.5 hover:bg-yellow-600 ease-out duration-1000 rounded lg:ml-10 md:ml-6"
+                                >
+                                    Login/Signup
+                                </button>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </nav>
         </>

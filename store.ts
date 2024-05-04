@@ -3,8 +3,8 @@ import { persist } from "zustand/middleware";
 import { LoggedInCollegeAdmin, NotRegisteredUser, User } from "./@types";
 
 interface UserState {
-    user: User | NotRegisteredUser | null;
-    setUser: (user: User | NotRegisteredUser) => void;
+    user: User | null;
+    setUser: (user: User) => void;
     logoutUser: () => void;
 }
 const initialUserState = { user: null };

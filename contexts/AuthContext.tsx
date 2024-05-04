@@ -8,6 +8,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import { User } from "@/@types";
 
 export const AuthContext = createContext({});
 
@@ -49,8 +50,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     }
                     Cookies.set("accessToken", data.user.accessToken);
                     toast.success("Logged in successfully.");
-                    console.log(user);
-                    setUser(data.user);
+                    setUser(data.user as User);
                 } else {
                     Cookies.remove("accessToken");
                     logoutUser();
