@@ -24,6 +24,8 @@ model User {
   socials            Socials[]
   member_of_colleges College[] @relation("College_Members")
   core_team_colleges College[] @relation("Core_team_members")
+
+  registrations      Registration[]
 }
 
 model Socials {
@@ -78,6 +80,17 @@ model Event {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now()) @updatedAt
   college     College  @relation(fields: [collegeId], references: [id])
+
+  registerations  Registration[]
+}
+
+model Registration {
+  id        Int      @id @default(autoincrement())
+  eventId   Int
+  userId    Int
+  createdAt DateTime @default(now())
+  event     Event    @relation(fields: [eventId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 model College {
