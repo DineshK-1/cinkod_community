@@ -39,14 +39,14 @@ const BlogsPage = async () => {
 
             <div className="flex justify-center mb-12 rounded-lg ">
                 <div className="w-full md:w-4/5 lg:w-3/4 mb-12 bg-gradient-to-br from-Blue/20 to-transparent rounded-lg py-10 px-10">
-                    <div className="flex justify-between mt-2">
+                    {/* <div className="flex justify-between mt-2">
                         <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
                             Back
                         </button>
                         <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
                             Next
                         </button>
-                    </div>
+                    </div> */}
                     <div className="flex  text-white justify-center  mb-4">
                         {/* */}
                         <select className="mr-4 px-4 py-2 bg-gray-800 border border-gray-800 rounded-md">
@@ -58,7 +58,7 @@ const BlogsPage = async () => {
                         </select>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative">
+                    <div className="flex flex-col gap-6">
                         {blogs.map((card, index) => (
                             <div
                                 key={card.id}
@@ -66,7 +66,7 @@ const BlogsPage = async () => {
                                     index === 0 ? "md:col-span-3" : ""
                                 }`}
                             >
-                                <div className="flex">
+                                <div className="flex p-4">
                                     <Image
                                         src={``}
                                         alt={`Image${card.id}`}
@@ -74,17 +74,16 @@ const BlogsPage = async () => {
                                         width={100}
                                         height={100}
                                     />
-                                    <div className="w-2/3 p-4">
-                                        <h2 className="text-lg text-white font-semibold mb-2">
-                                            {card.title}
-                                        </h2>
-                                        {/* <h2 className="text-lg text-white font-semibold mb-2">
-                                            {card.title2}
-                                        </h2> */}
-                                        <p className="text-white mb-24">
-                                            {card.description}
-                                        </p>
-                                        <div className="flex flex-row gap-3 w-64">
+                                    <div className="w-2/3 px-4 py-2 justify-between flex flex-col mb-6">
+                                        <div className="">
+                                            <h2 className="text-xl text-white font-bold mb-2">
+                                                {card.title}
+                                            </h2>
+                                            <p className="text-white mb-24 py-2 text-sm">
+                                                {card.description}
+                                            </p>
+                                        </div>
+                                        <div className="flex flex-row gap-3 w-64 px-4">
                                             <button className="bg-yellow-500 hover:bg-yellow-400 text-slate-800 font-normal py-2 px-4 rounded">
                                                 <Link href="/blogs/blogId">
                                                     UpVote!

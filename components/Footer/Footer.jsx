@@ -23,9 +23,9 @@ function Footer() {
 									COMMUNITY
 								</span>
 
-								<div className="">
+								<div className="flex flex-col">
 									<p className="text-gray-400 text-md mt-2">cin students;</p>
-									<p className="text-gray-400 text-md ml-24">
+									<p className="text-gray-400 text-md">
 										cout professionals;
 									</p>
 								</div>
