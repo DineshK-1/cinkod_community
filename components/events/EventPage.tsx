@@ -53,7 +53,7 @@ export default function EventPage({ events }: { events: Event[] }) {
                                             {event.name}
                                         </h2>
                                         <h2 className="text-lg text-Yellow font-normal mb-2">
-                                            College name
+                                            {event.college.name}
                                         </h2>
                                         <p className="text-white">
                                             {event.description}

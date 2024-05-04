@@ -1,18 +1,32 @@
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import Mad from "@/public/ChaptersCollege/madhav.png";
 import College from "@/public/ChaptersCollege/college.png";
 import Card from "@/components/chapters-college/card";
 import Image from "next/image";
 import JoinButton from "@/components/chapters-college/JoinButton";
 
-function CollegePage() {
+async function getCollege(collegeId: string) {
+    return await fetch(process.env.NEXT_PUBLIC_HOST_URL + `/api/db/college`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            collegeId,
+        }),
+    });
+}
+
+async function CollegePage({ params }: { params: { collegeId: string } }) {
+    const college = await getCollege(params.collegeId).then((res) =>
+        res.json()
+    );
     return (
         <>
             <div className="overflow-x-hidden relative px-28 bg-[#121212] h-full">
                 <Header />
 
-                <div className=" relative flex justify-center items-center h-full ">
+                <div className="relative flex justify-center items-center h-full">
                     <div
                         className="absolute w-80 h-80 rounded-full"
                         style={{
@@ -23,14 +37,7 @@ function CollegePage() {
                         }}
                     ></div>
 
-                    <section className="flex flex-col justify-center items-center mt-24  h-full w-full ">
-                        <div className=" img-parent h-[4.66rem] w-full flex  justify-center items-center ">
-                            <div className="img  ">
-                                {" "}
-                                <Image className="" src={Mad} alt="" />
-                            </div>
-                        </div>
-
+                    <section className="flex flex-col justify-center items-center mt-4  h-full w-full ">
                         <div className=" h-68 w-full flex justify-center items-center">
                             <Image
                                 className=" h-68 w-full "
@@ -41,7 +48,7 @@ function CollegePage() {
 
                         <div className="text-white w-full flex my-7 justify-between">
                             <h1 className="text-left font-medium text-3xl">
-                                Madhav University of Computer Science
+                                {college.college.name}
                             </h1>
                             <JoinButton />
                         </div>
@@ -52,24 +59,7 @@ function CollegePage() {
                             </h1>
 
                             <p className="text-white leading-8 text-lg py-4">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Velit quibusdam laudantium
-                                dolor soluta quod, quaerat ratione dicta. Porro
-                                corporis illum aliquid quaerat tempore! Dicta
-                                suscipit assumenda expedita. Mollitia quas
-                                quisquam pariatur enim corrupti? Laudantium,
-                                optio! Sit eum eveniet saepe commodi fugiat
-                                delectus magni iste ipsum aliquid culpa? Magnam,
-                                facilis non sint neque alias facere sapiente sed
-                                accusantium illum odio consectetur in nobis,
-                                reprehenderit repudiandae deleniti ducimus vero,
-                                doloribus veritatis?Lorem ipsum dolor sit, amet
-                                consectetur adipisicing elit. Ratione animi
-                                corrupti neque debitis inventore veritatis ipsa
-                                repellendus esse voluptatibus ducimus ab
-                                quibusdam quidem, officiis minima harum
-                                laboriosam amet voluptates. Sunt dolores labore
-                                pariatur beatae.
+                                {college.college.description}
                             </p>
                         </div>
                     </section>
@@ -106,7 +96,7 @@ function CollegePage() {
 
                 {/* *********** NEXT SECTION ************ */}
 
-                <section className="flex flex-col items-center mb-36 gap-8 h-full py-4">
+                <section className="flex flex-col items-center gap-8 h-full py-4">
                     <div className="Heading text-center text-the-blue text-3xl">
                         <h1>Organiser</h1>
                     </div>
@@ -143,8 +133,8 @@ function CollegePage() {
 
                 {/* ********* NEXT SECTION ********* */}
 
-                <section className="flex flex-col mb-44 w-full  justify-center py-4">
-                    <h1 className="block   text-3xl hover:text-yellow-400 text-the-yellow mb-16 ml-3">
+                <section className="flex flex-col mb-4 w-full justify-center py-4">
+                    <h1 className="block text-3xl hover:text-yellow-400 text-the-yellow mb-10">
                         Previous Events
                     </h1>
 

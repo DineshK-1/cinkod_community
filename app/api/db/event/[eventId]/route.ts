@@ -12,6 +12,9 @@ export async function GET(
             where: {
                 id: parseInt(params.eventId),
             },
+            include: {
+                college: true,
+            },
         });
 
         console.log(event);

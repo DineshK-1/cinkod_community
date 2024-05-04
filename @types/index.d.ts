@@ -83,6 +83,7 @@ export type Event = {
     maxSlots: number;
     createdAt: Date;
     updatedAt: Date;
+    college: College;
 };
 
 export type Blog = {
