@@ -2,7 +2,7 @@ import { FirebaseAdminAuth } from "@/firebase/firebaseAdmin";
 import { verifyHeaderHasToken } from "@/services/auth";
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
-
+export const dynamic = "force-dynamic";
 async function checkIfUserHasAccess(token: string) {
     const { uid } = await FirebaseAdminAuth.verifyIdToken(token, true);
 
