@@ -10,7 +10,6 @@ async function getBlogs() {
         .get(process.env.NEXT_PUBLIC_HOST_URL + "/api/db/blogs/fetch")
         .then((res) => res.data)
         .catch((err) => {
-            console.log(err);
             return [];
         });
     return blogs as Blog[];

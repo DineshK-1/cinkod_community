@@ -9,7 +9,6 @@ async function getData() {
     const res = await axios
         .get(process.env.NEXT_PUBLIC_HOST_URL + "/api/db/events/fetch")
         .catch((err) => {
-            console.log(err);
             return { data: [] };
         });
 
