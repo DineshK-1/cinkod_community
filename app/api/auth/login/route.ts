@@ -64,7 +64,10 @@ export async function POST(request: Request) {
     //         status: 401,
     //     });
     // }
-    return new Response("You don't have access to this website", {
-        status: 401,
-    });
+    return new Response(
+        JSON.stringify({ message: "You don't have access to this website" }),
+        {
+            status: 401,
+        }
+    );
 }
