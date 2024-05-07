@@ -74,7 +74,7 @@ export async function POST(request: Request) {
     //         { status: 500 }
     //     );
     // }
-    return new NextResponse("You don't have access to this website", {
+    return new Response("You don't have access to this website", {
         status: 401,
     });
 }
