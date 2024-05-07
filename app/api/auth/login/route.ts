@@ -64,4 +64,7 @@ export async function POST(request: Request) {
             status: 401,
         });
     }
+    return new NextResponse("You don't have access to this website", {
+        status: 401,
+    });
 }
