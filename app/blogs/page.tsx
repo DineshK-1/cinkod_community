@@ -6,12 +6,14 @@ import { Blog } from "@/@types";
 import axios from "axios";
 
 async function getBlogs() {
+    console.log(process.env.NEXT_PUBLIC_HOST_URL);
     const blogs = await axios
         .get(process.env.NEXT_PUBLIC_HOST_URL + "/api/db/blogs/fetch")
         .then((res) => res.data)
         .catch((err) => {
             return [];
         });
+    console.log(blogs);
     return blogs as Blog[];
 }
 

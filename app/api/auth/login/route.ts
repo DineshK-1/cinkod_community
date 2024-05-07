@@ -61,8 +61,14 @@ export async function POST(request: Request) {
         );
     } catch (error: any) {
         console.log(error);
-        return new NextResponse("You don't have access to this website", {
-            status: 401,
-        });
+        return new NextResponse(
+            JSON.stringify({
+                error: "Error logging in",
+                e: error,
+            }),
+            {
+                status: 401,
+            }
+        );
     }
 }
