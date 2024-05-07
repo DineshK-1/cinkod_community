@@ -13,6 +13,7 @@ export async function GET() {
         });
         return NextResponse.json(events, { status: 200 });
     } catch (err) {
+        console.log(err);
         return NextResponse.json(
             { error: "Error Fetching Events" },
             { status: 500 }

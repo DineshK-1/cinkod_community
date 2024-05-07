@@ -8,6 +8,7 @@ export async function GET(request: Request) {
         const colleges = await prisma.college.findMany();
         return NextResponse.json(colleges, { status: 200 });
     } catch (e) {
+        console.error(e);
         return NextResponse.json(
             { error: "Error fetching colleges" },
             { status: 500 }

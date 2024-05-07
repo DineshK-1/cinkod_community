@@ -13,6 +13,7 @@ export async function GET(req: Request) {
 
         return NextResponse.json(blogs, { status: 200 });
     } catch (e) {
+        console.log(e);
         return NextResponse.json(
             {
                 error: "Error fetching events",

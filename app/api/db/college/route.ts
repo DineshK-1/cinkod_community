@@ -29,6 +29,7 @@ export async function POST(request: Request) {
             { status: 200 }
         );
     } catch (e) {
+        console.log(e);
         return new NextResponse(
             JSON.stringify({
                 error: "Error joining college",

@@ -60,6 +60,7 @@ export async function POST(request: Request) {
             { status: 200 }
         );
     } catch (error: any) {
+        console.log(error);
         return new NextResponse("You don't have access to this website", {
             status: 401,
         });
