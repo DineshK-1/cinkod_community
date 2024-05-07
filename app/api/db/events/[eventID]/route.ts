@@ -31,7 +31,7 @@ export async function PUT(
     const updatedEventData = await req.json();
 
     const updatedEvent = await prisma.event.update({
-      where: { id: eventID },
+      where: { id: parseInt(eventID) },
       data: updatedEventData
     });
 
