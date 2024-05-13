@@ -10,6 +10,7 @@ async function checkIfUserHasAccess(token: string) {
         throw new Error("User not found!");
     }
     const prisma = new PrismaClient();
+    console.log(prisma);
     const user = await prisma.user.findFirst({
         where: {
             google_uid: uid,
@@ -32,6 +33,7 @@ export async function POST(request: Request) {
                 return user;
             })
             .catch((error) => {
+                console.log(error);
                 return null;
             });
         if (!userDetails) {
